@@ -1,9 +1,27 @@
 {
   "name": "@geocoding-ai/mcp",
+  "type": "module",
+  "version": "0.3.0",
+  "description": "Model Context Protocol CLI",
+  "keywords": [
+    "mcp-server",
+    "mcp",
+    "geocoding",
+    "reverse-geocoding",
+    "geocoding-ai",
+    "nominatim",
+    "openstreetmap",
+    "osm",
+    "geojson",
+    "geocodejson"
+  ],
+  "author": {
+    "name": "Srihari Thalla",
+    "email": "daxserver@icloud.com"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "type": "module",
-  "version": "0.1.0",
+  "bin": "./dist/index.js",
   "files": [
     "dist"
   ],
@@ -15,9 +33,10 @@
   },
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
     "inspect": "bunx @modelcontextprotocol/inspector node dist/index.js",
-    "watch": "tsc --watch",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "prepublishOnly": "bun run build && chmod 755 dist/index.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
