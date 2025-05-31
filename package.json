@@ -32,10 +32,11 @@
     "tag": "latest"
   },
   "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
     "inspect": "bunx @modelcontextprotocol/inspector node dist/index.js",
     "lint": "eslint src",
-    "prepublishOnly": "bunx tsc && chmod 755 dist/index.js",
-    "watch": "tsc --watch"
+    "prepublishOnly": "bun run build && chmod 755 dist/index.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
