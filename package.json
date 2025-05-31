@@ -1,7 +1,7 @@
 {
   "name": "@geocoding-ai/mcp",
   "type": "module",
-  "version": "0.3.0",
+  "version": "dev",
   "description": "Model Context Protocol CLI",
   "keywords": [
     "mcp-server",
@@ -36,12 +36,14 @@
     "dev": "tsc --watch",
     "inspect": "bunx @modelcontextprotocol/inspector node dist/index.js",
     "lint": "eslint src",
+    "prepare": "husky",
     "prepublishOnly": "bun run build && chmod 755 dist/index.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
     "@types/bun": "latest",
     "eslint": "^9.28.0",
+    "husky": "^9.1.7",
     "typescript-eslint": "^8.33.0"
   },
   "peerDependencies": {
