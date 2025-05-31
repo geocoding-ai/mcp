@@ -1,9 +1,9 @@
 import axios from 'axios'
 import type { ReverseGeocodeParams } from '../types/reverseGeocodeTypes.js'
 import type { GeocodeParams } from '../types/geocodeTypes.js'
-import packageJson from '../../package.json' with { type: 'json' };
+import packageJson from '../../package.json' with { type: 'json' }
 
-const USER_AGENT = `GeocodingMCP github.com/geocoding-ai/mcp ${packageJson.version}`;
+const USER_AGENT = `GeocodingMCP github.com/geocoding-ai/mcp ${packageJson.version}`
 
 const nominatimClient = axios.create({
   baseURL: 'https://nominatim.geocoding.ai/',
