@@ -4,10 +4,11 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { registerGeocodeTool } from "./tools/geocode.js"
 import { registerReverseGeocodeTool } from "./tools/reverseGeocode.js"
+import packageJson from '../package.json' with { type: 'json' };
 
 const server = new McpServer({
   name: "geocoding",
-  version: "0.1.0",
+  version: packageJson.version,
   description: "Geocoding API",
 })
 

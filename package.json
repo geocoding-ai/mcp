@@ -1,7 +1,7 @@
 {
   "name": "@geocoding-ai/mcp",
   "type": "module",
-  "version": "0.3.0",
+  "version": "dev",
   "description": "Model Context Protocol CLI",
   "keywords": [
     "mcp-server",
