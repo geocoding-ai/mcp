@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { geocodeAddress } from "../clients/nominatimClient.js"
-import { GeocodeParams } from "../types/geocodeTypes.js"
-import handleGeocodeResult from "./toolUtils.js"
+import handleGeocodeResult from "./prepareResponse.js"
+import { GeocodeParamsSchema, type GeocodeParams } from "../types/geocodeTypes.js"
 
 const registerGeocodeTool = (server: McpServer) => {
   server.tool(
@@ -22,11 +22,11 @@ Input:
 - countrycodes: Filter that limits the search results to one or more countries. The country code must be the ISO 3166-1alpha2 code of the country.
                 Each place in Nominatim is assigned to one country code based on OSM country boundaries. In rare cases a place may not be in any country at all, for example, when it is in international waters. These places are also excluded when the filter is set.
 - layer: The layer filter allows to select places by themes. Comma-separated list of: address, poi, railway, natural, manmade
-        address:  This layer contains all places that make up an address: address points with house numbers, streets, inhabited places (suburbs, villages, cities, states etc.) and administrative boundaries.
+        address:  The address layer contains all places that make up an address: address points with house numbers, streets, inhabited places (suburbs, villages, cities, states etc.) and administrative boundaries.
         poi:      The poi layer selects all point of interest. This includes classic points of interest like restaurants, shops, hotels but also less obvious features like recycling bins, guideposts or benches.
         railway:  The railway layer includes railway infrastructure like tracks. Note that in Nominatim's standard configuration, only very few railway features are imported into the database.
         natural:  The natural layer collects features like rivers, lakes and mountains while the manmade layer functions as a catch-all for features not covered by the other layers.
-        manmade:
+        manmade:  The manmade layer collects features that are man-made.
 - featureType: Allows to have a more fine-grained selection for places from the address layer. Results can be restricted to places that make up the 'state', 'country' or 'city' part of an address. A featureType of settlement selects any human inhabited feature from 'state' down to 'neighbourhood'.
               When featureType is set, then results are automatically restricted to the address layer.
 - polygon_geojson: Add the full geometry of the place to the result output. Output formats in GeoJSON, KML, SVG or WKT are supported. Only one of these options can be used at a time.
@@ -37,8 +37,11 @@ Input:
 
 Output:
 See https://nominatim.org/release-docs/latest/api/Output/ for the output format.
+
+License:
+Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 `,
-    GeocodeParams,
+    GeocodeParamsSchema,
     async (params: GeocodeParams) => {
       const result = await geocodeAddress(params)
 

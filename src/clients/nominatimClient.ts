@@ -9,20 +9,14 @@ const nominatimClient = axios.create({
   },
 })
 
-const parseResult = (result: any[]) => {
-  result.forEach((item: any) => {
-    delete item.licence
-  })
-
-  return result
-}
+const condenseOutput = (result: any[]) => result.map(({ licence, ...item }) => item)
 
 export const geocodeAddress = async (params: GeocodeParams) => {
   const response = await nominatimClient.get('search', { params })
-  return parseResult(response.data)
+  return condenseOutput(response.data)
 }
 
 export const reverseGeocode = async (params: ReverseGeocodeParams) => {
   const response = await nominatimClient.get('reverse', { params })
-  return parseResult([response.data])
+  return condenseOutput([response.data])
 }

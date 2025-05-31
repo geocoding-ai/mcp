@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { reverseGeocode } from "../clients/nominatimClient.js"
-import { ReverseGeocodeParams } from "../types/reverseGeocodeTypes.js"
-import handleGeocodeResult from "./toolUtils.js"
+import handleGeocodeResult from "./prepareResponse.js"
+import { ReverseGeocodeParamsSchema, type ReverseGeocodeParams } from "../types/reverseGeocodeTypes.js"
 
 const registerReverseGeocodeTool = (server: McpServer) => {
   server.tool(
@@ -33,11 +33,11 @@ Input:
 - extratags: When set to 1, the response include any additional information in the result that is available in the Nominatim database.
 - namedetails: When set to 1, include a full list of names for the result. These may include language variants, older names, references and brand.
 - layer: The layer filter allows to select places by themes. Comma-separated list of: address, poi, railway, natural, manmade
-        address:  This layer contains all places that make up an address: address points with house numbers, streets, inhabited places (suburbs, villages, cities, states etc.) and administrative boundaries.
+        address:  The address layer contains all places that make up an address: address points with house numbers, streets, inhabited places (suburbs, villages, cities, states etc.) and administrative boundaries.
         poi:      The poi layer selects all point of interest. This includes classic points of interest like restaurants, shops, hotels but also less obvious features like recycling bins, guideposts or benches.
         railway:  The railway layer includes railway infrastructure like tracks. Note that in Nominatim's standard configuration, only very few railway features are imported into the database.
         natural:  The natural layer collects features like rivers, lakes and mountains while the manmade layer functions as a catch-all for features not covered by the other layers.
-        manmade:
+        manmade:  The manmade layer collects features that are man-made.
 - polygon_geojson: Add the full geometry of the place to the result output. Output formats in GeoJSON, KML, SVG or WKT are supported. Only one of these options can be used at a time.
 - polygon_kml: Add the full geometry of the place to the result output. Output formats in GeoJSON, KML, SVG or WKT are supported. Only one of these options can be used at a time.
 - polygon_svg: Add the full geometry of the place to the result output. Output formats in GeoJSON, KML, SVG or WKT are supported. Only one of these options can be used at a time.
@@ -46,8 +46,11 @@ Input:
 
 Output:
 See https://nominatim.org/release-docs/latest/api/Output/ for the output format.
+
+License:
+Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 `,
-    ReverseGeocodeParams,
+    ReverseGeocodeParamsSchema,
     async (params: ReverseGeocodeParams) => {
       const result = await reverseGeocode(params)
 
