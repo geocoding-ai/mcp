@@ -1,4 +1,6 @@
-![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/geocoding-ai/mcp?utm_source=oss&utm_medium=github&utm_campaign=geocoding-ai%2Fmcp&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
+![GitHub License](https://img.shields.io/github/license/geocoding-ai/mcp?link=https%3A%2F%2Fopensource.org%2Flicense%2FMIT)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/geocoding-ai/mcp?utm_source=oss&utm_medium=github&utm_campaign=geocoding-ai/mcp&labelColor=171717&color=FF570A&link=https://coderabbit.ai&label=CodeRabbit+Reviews) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/geocoding-ai/mcp/lint.yml?label=eslint)
+![NPM Version](https://img.shields.io/npm/v/%40geocoding-ai%2Fmcp) ![NPM Last Update (with dist tag)](https://img.shields.io/npm/last-update/%40geocoding-ai%2Fmcp/latest?label=npm%20last%20published&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40geocoding-ai%2Fmcp)
 
 # Geocoding MCP Server
 
