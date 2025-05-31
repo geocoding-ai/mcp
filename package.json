@@ -1,0 +1,35 @@
+{
+  "name": "@geocoding-ai/mcp",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {
+    "build": "tsc",
+    "inspect": "bunx @modelcontextprotocol/inspector node dist/index.js",
+    "watch": "tsc --watch",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@types/axios": "^0.14.4",
+    "@types/bun": "latest",
+    "eslint": "^9.28.0",
+    "typescript-eslint": "^8.33.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "axios": "^1.9.0"
+  }
+}
