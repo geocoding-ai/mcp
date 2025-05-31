@@ -1,6 +1,6 @@
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 
-const handleGeocodeResult = (result: any): CallToolResult => {
+export const handleGeocodeResult = (result: any): CallToolResult => {
   let text = ""
 
   if (!result || !Array.isArray(result) || result.length === 0) {
@@ -20,5 +20,3 @@ const handleGeocodeResult = (result: any): CallToolResult => {
     }],
   }
 }
-
-export default handleGeocodeResult

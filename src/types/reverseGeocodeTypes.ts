@@ -8,5 +8,5 @@ export const ReverseGeocodeParamsSchema: z.ZodRawShape = {
   ...CommonNominatimParamsSchema,
 }
 
-const schema = z.object(ReverseGeocodeParamsSchema)
-export type ReverseGeocodeParams = z.infer<typeof schema>;
+const _schema = z.object(ReverseGeocodeParamsSchema)
+export type ReverseGeocodeParams = z.infer<typeof _schema>;

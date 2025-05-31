@@ -1,9 +1,9 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { reverseGeocode } from "../clients/nominatimClient.js"
-import handleGeocodeResult from "./prepareResponse.js"
+import { handleGeocodeResult } from "./prepareResponse.js"
 import { ReverseGeocodeParamsSchema, type ReverseGeocodeParams } from "../types/reverseGeocodeTypes.js"
 
-const registerReverseGeocodeTool = (server: McpServer) => {
+export const registerReverseGeocodeTool = (server: McpServer) => {
   server.tool(
     "reverse_geocode",
     `Reverse geocoding generates an address from a coordinate given as latitude and longitude.
@@ -58,5 +58,3 @@ Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
     },
   )
 }
-
-export default registerReverseGeocodeTool

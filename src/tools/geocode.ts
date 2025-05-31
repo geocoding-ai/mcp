@@ -1,9 +1,9 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { geocodeAddress } from "../clients/nominatimClient.js"
-import handleGeocodeResult from "./prepareResponse.js"
+import { handleGeocodeResult } from "./prepareResponse.js"
 import { GeocodeParamsSchema, type GeocodeParams } from "../types/geocodeTypes.js"
 
-const registerGeocodeTool = (server: McpServer) => {
+export const registerGeocodeTool = (server: McpServer) => {
   server.tool(
     "geocode",
     `Geocoding generates a coordinate from an address.
@@ -49,5 +49,3 @@ Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
     },
   )
 }
-
-export default registerGeocodeTool

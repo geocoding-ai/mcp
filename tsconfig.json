@@ -7,7 +7,6 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
     "allowJs": true,
     // Node.js ESM mode
     "moduleResolution": "NodeNext",
