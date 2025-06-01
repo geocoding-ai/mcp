@@ -36,7 +36,6 @@
     "dev": "tsc --watch",
     "inspect": "bunx @modelcontextprotocol/inspector node dist/index.js",
     "lint": "eslint src",
-    "prepare": "husky",
     "prepublishOnly": "bun run build && chmod 755 dist/index.js"
   },
   "devDependencies": {
