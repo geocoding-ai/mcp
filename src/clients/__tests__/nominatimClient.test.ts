@@ -1,5 +1,5 @@
 import { describe, it, expect, test } from 'bun:test'
-import packageJson from '@/../package.json' with { type: 'json' }
+import packageJson from '../../../package.json' with { type: 'json' }
 
 // Note: Due to difficulties in reliably mocking 'axios' with bun:test in this environment,
 // tests requiring a mocked axios instance (and thus, true unit tests for network calls) are skipped.
