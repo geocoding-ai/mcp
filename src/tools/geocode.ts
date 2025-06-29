@@ -1,11 +1,14 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
-import { geocodeAddress } from "../clients/nominatimClient.js"
-import { handleGeocodeResult } from "./prepareResponse.js"
-import { GeocodeParamsSchema, type GeocodeParams } from "../types/geocodeTypes.js"
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { geocodeAddress } from '@/clients/nominatimClient.js'
+import { handleGeocodeResult } from '@/tools/prepareResponse.js'
+import {
+  GeocodeParamsSchema,
+  type GeocodeParams,
+} from '@/types/geocodeTypes.js'
 
 export const registerGeocodeTool = (server: McpServer) => {
   server.tool(
-    "geocode",
+    'geocode',
     `Geocoding generates a coordinate from an address.
 
 The search API allows to look up a location from a textual description or address. Nominatim supports structured and free-form search queries.

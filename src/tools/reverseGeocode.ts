@@ -1,11 +1,14 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
-import { reverseGeocode } from "../clients/nominatimClient.js"
-import { handleGeocodeResult } from "./prepareResponse.js"
-import { ReverseGeocodeParamsSchema, type ReverseGeocodeParams } from "../types/reverseGeocodeTypes.js"
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { reverseGeocode } from '@/clients/nominatimClient.js'
+import { handleGeocodeResult } from '@/tools/prepareResponse.js'
+import {
+  ReverseGeocodeParamsSchema,
+  type ReverseGeocodeParams,
+} from '@/types/reverseGeocodeTypes.js'
 
 export const registerReverseGeocodeTool = (server: McpServer) => {
   server.tool(
-    "reverse_geocode",
+    'reverse_geocode',
     `Reverse geocoding generates an address from a coordinate given as latitude and longitude.
 
 This tool finds the closest suitable OpenStreetMap (OSM) object and returns its address information.

@@ -1,10 +1,10 @@
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
+import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js'
 
 export const handleGeocodeResult = (result: any): CallToolResult => {
-  let text = ""
+  let text = ''
 
   if (!result || !Array.isArray(result) || result.length === 0) {
-    text = "This service is unable to find an address for the given query."
+    text = 'This service is unable to find an address for the given query.'
   } else {
     try {
       text = JSON.stringify(result)
@@ -14,9 +14,11 @@ export const handleGeocodeResult = (result: any): CallToolResult => {
   }
 
   return {
-    content: [{
-      type: "text",
-      text,
-    }],
+    content: [
+      {
+        type: 'text',
+        text,
+      },
+    ],
   }
 }
