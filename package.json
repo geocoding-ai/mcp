@@ -32,7 +32,7 @@
     "tag": "latest"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "dev": "tsc --watch",
     "format": "prettier --write \"**/*.ts\"",
     "inspect": "bunx @modelcontextprotocol/inspector node dist/index.js",
@@ -44,6 +44,7 @@
     "@types/bun": "latest",
     "eslint": "^9.30.0",
     "prettier": "^3.6.2",
+    "tsc-alias": "^1.8.16",
     "typescript-eslint": "^8.35.0"
   },
   "peerDependencies": {
