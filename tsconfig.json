@@ -24,7 +24,12 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    // Path aliases
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    }
   },
   "include": [
     "src/**/*"
