@@ -6,6 +6,10 @@
 
 This is a Model Context Protocol (MCP) server that provides geocoding services by integrating with the Nominatim API.
 
+<a href="https://glama.ai/mcp/servers/@geocoding-ai/mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@geocoding-ai/mcp/badge" alt="Geocoding Server MCP server" />
+</a>
+
 ## Installation
 
 ### Requirements
