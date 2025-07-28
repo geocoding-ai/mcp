@@ -8,23 +8,28 @@
     "module": "NodeNext",
     "moduleDetection": "force",
     "allowJs": true,
+
     // Node.js ESM mode
     "moduleResolution": "NodeNext",
     "verbatimModuleSyntax": true,
+
     // Output directory
     "outDir": "./dist",
     "rootDir": "./src",
+
     // Best practices
     "strict": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
+
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
     "resolveJsonModule": true,
+
     // Path aliases
     "baseUrl": "./src",
     "paths": {
