@@ -40,18 +40,18 @@
     "prepublishOnly": "bun run build && chmod 755 dist/index.js"
   },
   "devDependencies": {
-    "@eslint/js": "^9.30.0",
-    "@types/bun": "1.2.19",
-    "eslint": "^9.30.0",
+    "@eslint/js": "^9.34.0",
+    "@types/bun": "1.2.21",
+    "eslint": "^9.34.0",
     "prettier": "^3.6.2",
     "tsc-alias": "^1.8.16",
-    "typescript-eslint": "^8.35.0"
+    "typescript-eslint": "^8.41.0"
   },
   "peerDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.12.1",
-    "axios": "^1.10.0"
+    "@modelcontextprotocol/sdk": "1.17.4",
+    "axios": "^1.11.0"
   }
 }
