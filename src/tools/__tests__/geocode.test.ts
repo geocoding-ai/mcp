@@ -1,8 +1,8 @@
 // src/tools/geocode.test.ts
-import { describe, it, expect, mock, beforeEach, afterEach } from 'bun:test'
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { registerGeocodeTool } from '@/tools/geocode.js'
-import * as nominatimClient from '@/clients/nominatimClient.js'
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test'
+import * as nominatimClient from '../../clients/nominatimClient.js'
 // Use the actual implementation from prepareResponse
 import { handleGeocodeResult } from '@/tools/prepareResponse.js'
 import type { GeocodeParams } from '@/types/geocodeTypes.js'
@@ -26,20 +26,16 @@ mock.module('@modelcontextprotocol/sdk/server/mcp.js', () => ({
 }))
 
 // Mock only nominatimClient
-mock.module('@/clients/nominatimClient.js', () => ({
+mock.module('../../clients/nominatimClient.js', () => ({
   geocodeAddress: mock(async (params: GeocodeParams) => {
     // Default successful mock implementation, can be overridden in tests
-    return [
-      { place_id: 123, display_name: `Mocked result for ${params.query}` },
-    ]
+    return [{ place_id: 123, display_name: `Mocked result for ${params.query}` }]
   }),
 }))
 
 describe('registerGeocodeTool', () => {
   let serverInstance: McpServer
-  let toolHandler:
-    | ((params: GeocodeParams) => Promise<CallToolResult>)
-    | undefined
+  let toolHandler: ((params: GeocodeParams) => Promise<CallToolResult>) | undefined
 
   beforeEach(() => {
     serverInstance = new McpServer({ name: 'test-server', version: '1.0' })
@@ -54,8 +50,7 @@ describe('registerGeocodeTool', () => {
 
   it("should register a tool named 'geocode'", () => {
     expect(serverInstance.tool).toHaveBeenCalled()
-    const mockCalls = (serverInstance.tool as ReturnType<typeof mock>).mock
-      .calls
+    const mockCalls = (serverInstance.tool as ReturnType<typeof mock>).mock.calls
     expect(mockCalls[0]?.[0]).toBe('geocode')
     expect(typeof mockCalls[0]?.[1]).toBe('string') // Description
     expect(mockCalls[0]?.[2]).toBeDefined() // Schema
@@ -73,9 +68,7 @@ describe('registerGeocodeTool', () => {
     // Expected result from the actual handleGeocodeResult
     const expectedCallToolResult = handleGeocodeResult(mockGeocodeApiResult)
 
-    const geocodeAddressSpy = nominatimClient.geocodeAddress as ReturnType<
-      typeof mock
-    >
+    const geocodeAddressSpy = nominatimClient.geocodeAddress as ReturnType<typeof mock>
     geocodeAddressSpy.mockResolvedValue(mockGeocodeApiResult)
 
     const result = await toolHandler(params)
@@ -93,13 +86,9 @@ describe('registerGeocodeTool', () => {
       addressdetails: 1,
       countrycodes: 'fr',
     }
-    const geocodeAddressSpy = nominatimClient.geocodeAddress as ReturnType<
-      typeof mock
-    >
+    const geocodeAddressSpy = nominatimClient.geocodeAddress as ReturnType<typeof mock>
     // Provide a default resolution for this spy instance for this test
-    geocodeAddressSpy.mockResolvedValue([
-      { place_id: 456, display_name: 'Paris Result' },
-    ])
+    geocodeAddressSpy.mockResolvedValue([{ place_id: 456, display_name: 'Paris Result' }])
 
     await toolHandler(params)
     expect(geocodeAddressSpy).toHaveBeenCalledWith(params)
@@ -111,9 +100,7 @@ describe('registerGeocodeTool', () => {
     const params: GeocodeParams = { query: 'trigger-api-error' }
     const errorMessage = 'Nominatim API error during test' // Use a distinct message
 
-    const geocodeAddressSpy = nominatimClient.geocodeAddress as ReturnType<
-      typeof mock
-    >
+    const geocodeAddressSpy = nominatimClient.geocodeAddress as ReturnType<typeof mock>
     // Configure the mock to reject with a specific error when called
     geocodeAddressSpy.mockImplementation(async () => {
       throw new Error(errorMessage)

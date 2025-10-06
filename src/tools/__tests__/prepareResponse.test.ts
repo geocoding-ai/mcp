@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'bun:test'
 import { handleGeocodeResult } from '@/tools/prepareResponse.js'
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js'
+import { describe, expect, it } from 'bun:test'
 
 describe('handleGeocodeResult', () => {
   it('should return a message if the result is null', () => {
@@ -43,9 +43,7 @@ describe('handleGeocodeResult', () => {
   })
 
   it('should return the stringified result if it is a valid array', () => {
-    const result = [
-      { place_id: 1, lat: '10.0', lon: '20.0', display_name: 'Test Location' },
-    ]
+    const result = [{ place_id: 1, lat: '10.0', lon: '20.0', display_name: 'Test Location' }]
     const expected: CallToolResult = {
       content: [
         {

@@ -1,10 +1,10 @@
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { reverseGeocode } from '@/clients/nominatimClient.js'
 import { handleGeocodeResult } from '@/tools/prepareResponse.js'
 import {
   ReverseGeocodeParamsSchema,
   type ReverseGeocodeParams,
 } from '@/types/reverseGeocodeTypes.js'
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 
 export const registerReverseGeocodeTool = (server: McpServer) => {
   server.tool(

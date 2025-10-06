@@ -1,0 +1,11 @@
+*.config.*
+*.md
+**/__tests__/*
+
+.git*
+.trae
+
+src
+
+glama.json
+tsconfig.json

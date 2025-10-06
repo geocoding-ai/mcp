@@ -1,5 +1,5 @@
-import { z } from 'zod'
 import { CommonNominatimParamsSchema } from '@/types/commonTypes.js'
+import { z } from 'zod'
 
 export const ReverseGeocodeParamsSchema: z.ZodRawShape = {
   lat: z.number().min(-90).max(90),

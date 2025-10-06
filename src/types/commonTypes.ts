@@ -1,9 +1,7 @@
 import { z } from 'zod'
 
 export const CommonNominatimParamsSchema: z.ZodRawShape = {
-  format: z
-    .enum(['xml', 'json', 'jsonv2', 'geojson', 'geocodejson'])
-    .default('jsonv2'),
+  format: z.enum(['xml', 'json', 'jsonv2', 'geojson', 'geocodejson']).default('jsonv2'),
   addressdetails: z
     .union([z.literal(0), z.literal(1)])
     .optional()

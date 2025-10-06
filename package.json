@@ -34,16 +34,19 @@
   "scripts": {
     "build": "tsc && tsc-alias",
     "dev": "tsc --watch",
-    "format": "prettier --write \"**/*.ts\"",
+    "format": "prettier --cache --write \"**/*.ts\"",
     "inspect": "bunx @modelcontextprotocol/inspector node dist/index.js",
     "lint": "eslint src",
+    "mcpb": "bunx @anthropic-ai/mcpb",
     "prepublishOnly": "bun run build && chmod 755 dist/index.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "@types/bun": "1.2.23",
     "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.3.0",
     "tsc-alias": "^1.8.16",
     "typescript-eslint": "^8.45.0"
   },
