@@ -1,0 +1,57 @@
+{
+  "manifest_version": "0.2",
+  "name": "geocoding-mcp",
+  "display_name": "Geocoding MCP Extension",
+  "version": "dev",
+  "description": "A geocoding and reverse geocoding MCP extension using OpenStreetMap Nominatim API",
+  "long_description": "This extension provides geocoding and reverse geocoding capabilities through the OpenStreetMap Nominatim API. It allows you to convert addresses to coordinates (geocoding) and coordinates to addresses (reverse geocoding). The extension supports various output formats including JSON, GeoJSON, and includes detailed address breakdowns, extra tags, and polygon geometries.",
+  "author": {
+    "name": "Srihari Thalla",
+    "email": "daxserver@icloud.com"
+  },
+  "keywords": [
+    "geocoding",
+    "reverse-geocoding",
+    "nominatim",
+    "openstreetmap",
+    "osm",
+    "geojson",
+    "geocodejson",
+    "mapping",
+    "location",
+    "coordinates"
+  ],
+  "license": "MIT",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {}
+    }
+  },
+  "tools": [
+    {
+      "name": "geocode",
+      "description": "Convert an address or location description to coordinates using OpenStreetMap Nominatim API"
+    },
+    {
+      "name": "reverse_geocode",
+      "description": "Convert coordinates (latitude/longitude) to an address using OpenStreetMap Nominatim API"
+    }
+  ],
+  "compatibility": {
+    "claude_desktop": ">=0.11.0",
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

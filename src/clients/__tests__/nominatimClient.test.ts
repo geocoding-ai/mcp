@@ -1,4 +1,4 @@
-import { describe, it, expect, test } from 'bun:test'
+import { describe, expect, it, test } from 'bun:test'
 import packageJson from '../../../package.json' with { type: 'json' }
 
 // Note: Due to difficulties in reliably mocking 'axios' with bun:test in this environment,
@@ -36,9 +36,7 @@ describe('nominatimClient', () => {
       const expectedUserAgent = `GeocodingMCP github.com/geocoding-ai/mcp ${packageJson.version}`
       // This test primarily verifies the construction of the USER_AGENT string itself.
       // The actual header being set by axios relies on axios's internal mechanisms.
-      expect(expectedUserAgent).toContain(
-        'GeocodingMCP github.com/geocoding-ai/mcp',
-      )
+      expect(expectedUserAgent).toContain('GeocodingMCP github.com/geocoding-ai/mcp')
       expect(expectedUserAgent).toContain(packageJson.version)
     })
   })

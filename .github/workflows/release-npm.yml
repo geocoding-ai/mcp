@@ -1,4 +1,4 @@
-name: Release
+name: Release NPM Package
 
 on:
   release:
@@ -11,13 +11,10 @@ permissions:
 
 jobs:
   release:
-    name: Release
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -29,6 +26,7 @@ jobs:
           VERSION: ${{ github.ref_name }}
         run: |
           echo $(jq --arg v "${{ env.VERSION }}" '(.version) = $v' package.json) > package.json
+          echo $(jq --arg v "${{ env.VERSION }}" '(.version) = $v' manifest.json) > manifest.json
 
       - name: Install Dependencies
         run: bun install --frozen-lockfile

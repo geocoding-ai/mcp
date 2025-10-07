@@ -1,5 +1,5 @@
-import { z } from 'zod'
 import { CommonNominatimParamsSchema } from '@/types/commonTypes.js'
+import { z } from 'zod'
 
 export const GeocodeParamsSchema: z.ZodRawShape = {
   q: z.string().min(1),

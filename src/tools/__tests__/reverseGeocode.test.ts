@@ -1,11 +1,11 @@
 // src/tools/reverseGeocode.test.ts
-import { describe, it, expect, mock, beforeEach, afterEach } from 'bun:test'
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-import { registerReverseGeocodeTool } from '@/tools/reverseGeocode.js'
-import * as nominatimClient from '@/clients/nominatimClient.js'
 import { handleGeocodeResult } from '@/tools/prepareResponse.js' // Using actual implementation
+import { registerReverseGeocodeTool } from '@/tools/reverseGeocode.js'
 import type { ReverseGeocodeParams } from '@/types/reverseGeocodeTypes.js'
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js'
+import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test'
+import * as nominatimClient from '../../clients/nominatimClient.js'
 
 // Mock McpServer to capture the handler
 mock.module('@modelcontextprotocol/sdk/server/mcp.js', () => ({
@@ -24,7 +24,7 @@ mock.module('@modelcontextprotocol/sdk/server/mcp.js', () => ({
 }))
 
 // Mock only nominatimClient
-mock.module('@/clients/nominatimClient.js', () => ({
+mock.module('../../clients/nominatimClient.js', () => ({
   // Also mock geocodeAddress to avoid interference if it's imported by other modules under test
   geocodeAddress: mock(async (params: any) => [
     { place_id: 999, display_name: `Geocode mock for ${params.query}` },
@@ -40,9 +40,7 @@ mock.module('@/clients/nominatimClient.js', () => ({
 
 describe('registerReverseGeocodeTool', () => {
   let serverInstance: McpServer
-  let toolHandler:
-    | ((params: ReverseGeocodeParams) => Promise<CallToolResult>)
-    | undefined
+  let toolHandler: ((params: ReverseGeocodeParams) => Promise<CallToolResult>) | undefined
 
   beforeEach(() => {
     serverInstance = new McpServer({ name: 'test-server', version: '1.0' })
@@ -56,8 +54,7 @@ describe('registerReverseGeocodeTool', () => {
 
   it("should register a tool named 'reverse_geocode'", () => {
     expect(serverInstance.tool).toHaveBeenCalled()
-    const mockCalls = (serverInstance.tool as ReturnType<typeof mock>).mock
-      .calls
+    const mockCalls = (serverInstance.tool as ReturnType<typeof mock>).mock.calls
     expect(mockCalls[0]?.[0]).toBe('reverse_geocode')
     expect(typeof mockCalls[0]?.[1]).toBe('string') // Description
     expect(mockCalls[0]?.[2]).toBeDefined() // Schema
@@ -73,13 +70,9 @@ describe('registerReverseGeocodeTool', () => {
       display_name: 'New York, NY',
     }
 
-    const expectedCallToolResult = handleGeocodeResult(
-      mockReverseGeocodeApiResult,
-    )
+    const expectedCallToolResult = handleGeocodeResult(mockReverseGeocodeApiResult)
 
-    const reverseGeocodeSpy = nominatimClient.reverseGeocode as ReturnType<
-      typeof mock
-    >
+    const reverseGeocodeSpy = nominatimClient.reverseGeocode as ReturnType<typeof mock>
     reverseGeocodeSpy.mockResolvedValue(mockReverseGeocodeApiResult)
 
     const result = await toolHandler(params)
@@ -97,9 +90,7 @@ describe('registerReverseGeocodeTool', () => {
       zoom: 10,
       format: 'jsonv2',
     }
-    const reverseGeocodeSpy = nominatimClient.reverseGeocode as ReturnType<
-      typeof mock
-    >
+    const reverseGeocodeSpy = nominatimClient.reverseGeocode as ReturnType<typeof mock>
     reverseGeocodeSpy.mockResolvedValue({
       place_id: 789,
       display_name: 'Paris Result',
@@ -115,9 +106,7 @@ describe('registerReverseGeocodeTool', () => {
     const params: ReverseGeocodeParams = { lat: '0', lon: '0' } // Params to trigger error
     const errorMessage = 'Nominatim API error for reverse geocode'
 
-    const reverseGeocodeSpy = nominatimClient.reverseGeocode as ReturnType<
-      typeof mock
-    >
+    const reverseGeocodeSpy = nominatimClient.reverseGeocode as ReturnType<typeof mock>
     reverseGeocodeSpy.mockImplementation(async () => {
       throw new Error(errorMessage)
     })

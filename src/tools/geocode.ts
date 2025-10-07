@@ -1,10 +1,7 @@
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { geocodeAddress } from '@/clients/nominatimClient.js'
 import { handleGeocodeResult } from '@/tools/prepareResponse.js'
-import {
-  GeocodeParamsSchema,
-  type GeocodeParams,
-} from '@/types/geocodeTypes.js'
+import { GeocodeParamsSchema, type GeocodeParams } from '@/types/geocodeTypes.js'
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 
 export const registerGeocodeTool = (server: McpServer) => {
   server.tool(
