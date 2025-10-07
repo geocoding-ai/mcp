@@ -16,7 +16,7 @@ A Desktop Extension (MCPB) for geocoding and reverse geocoding using the OpenStr
 ### Prerequisites
 
 - Claude Desktop (version 1.0.0 or higher)
-- Node.js runtime (version 16.0.0 or higher)
+- Node.js runtime (version 18.0.0 or higher)
 - Compatible with macOS, Windows, and Linux
 
 ### Install the Extension
@@ -45,7 +45,7 @@ Once installed, the extension provides two main tools:
 Convert an address or location description to coordinates.
 
 **Example Usage:**
-```
+```text
 Geocode "1600 Amphitheatre Parkway, Mountain View, CA"
 ```
 
@@ -65,7 +65,7 @@ Geocode "1600 Amphitheatre Parkway, Mountain View, CA"
 Convert coordinates to an address.
 
 **Example Usage:**
-```
+```text
 Reverse geocode coordinates 37.4224764, -122.0842499
 ```
 

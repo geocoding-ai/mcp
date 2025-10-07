@@ -1,7 +1,7 @@
 # Geocoding MCP Desktop Extension - Installation Guide
 
 ## Overview
-This guide will help you install and configure the Geocoding MCP Desktop Extension (DXT) for Claude Desktop.
+This guide will help you install and configure the Geocoding MCP Desktop Extension (MCPB) for Claude Desktop.
 
 ## Prerequisites
 - Claude Desktop application installed
@@ -12,15 +12,15 @@ This guide will help you install and configure the Geocoding MCP Desktop Extensi
 
 ### Method 1: Manual Installation (Recommended)
 
-1. **Locate the DXT file**
-   - Find the `mcp.dxt` file in your project directory
+1. **Locate the MCPB file**
+   - Find the `mcp.mcpb` file in your project directory
    - File size: ~44MB
 
 2. **Install via Claude Desktop**
    - Open Claude Desktop
    - Go to Settings → Extensions
    - Click "Install Extension"
-   - Select the `mcp.dxt` file
+   - Select the `mcp.mcpb` file
    - Follow the installation prompts
 
 3. **Verify Installation**
@@ -31,11 +31,11 @@ This guide will help you install and configure the Geocoding MCP Desktop Extensi
 ### Method 2: Command Line Installation (Advanced)
 
 ```bash
-# If you have the DXT CLI installed
-dxt install mcp.dxt
+# If you have the MCPB CLI installed
+mcpb install mcp.mcpb
 
 # Or using bunx
-bunx @anthropic-ai/dxt install mcp.dxt
+bunx @anthropic-ai/mcpb install mcp.mcpb
 ```
 
 ## Configuration
@@ -48,13 +48,13 @@ Once installed, you can use the following tools in Claude Desktop:
 
 ### Geocode Tool
 Convert addresses to coordinates:
-```
+```text
 Find the coordinates for "Times Square, New York"
 ```
 
 ### Reverse Geocode Tool
 Convert coordinates to addresses:
-```
+```text
 What address is at coordinates 40.7580, -73.9855?
 ```
 
@@ -124,10 +124,10 @@ To remove the extension:
 
 ## Version Information
 
-- **Extension Version**: 1.0.0
-- **DXT Version**: 0.1
+- **Extension Version**: 1.x
+- **MCPB Version**: 0.2
 - **MCP SDK Version**: Latest
-- **Node.js Compatibility**: 18.x, 20.x, 22.x
+- **Node.js Compatibility**: 18.x and above
 
 ---
 
